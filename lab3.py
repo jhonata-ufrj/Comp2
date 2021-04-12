@@ -62,48 +62,48 @@ class Monitor(Aluno):
                
 #Questão 1
 class Turma(Disciplina):
+    """Representa o conceito de uma Turma"""
+    #Construtor que aproveita atributos da classe Pai e adiciona novos atributos
     def __init__(self, nome, carga, vagas, horario, alunos = []):
         super().__init__(nome, carga, vagas)
         self.horario = horario
         self.alunos = alunos
 
+    #Método especial que soma dois objetos caso os parâmetros comparados no IF sejam iguais
     def __add__(self, obj):
         if(self.nome == obj.nome and self.carga == obj.carga and self.horario == obj.horario):
             novo = Turma(self.nome, self.carga, self.vagas + obj.vagas, self.horario, 
             self.alunos + obj.alunos )
             return novo
         else:
-            return "Não foi possív"    
+            string = "Não foi possível juntar as turmas. "
+            if(self.nome != obj.nome): 
+                string += "Nomes têm que ser iguais. " 
+            if(self.carga != obj.carga):
+                string += "Cargas têm que ser iguais. "
+            if(self.horario != obj.horario):
+                string += "Horários têm que ser iguais"
+            return string    
 
     def __str__(self):
+        """Retorna uma descrição de um objeto da classe"""
         return "{}, carga: {}, horario: {}\nvagas totais: {}, vagas livres: {}".format(self.nome,
         self.carga, self.horario, self.vagas, self.vagas - len(self.alunos))
 
 
 #Questão 2
 class Bolsista(Aluno):
+    """Representa o conceito de um Bolsista"""
+    #Construtor que aproveita atributos da classe Pai e adiciona um novo atributo
     def __init__(self, nome, DRE, bolsa):
         super().__init__(nome, DRE)
         self.bolsa = bolsa
 
+    #Método que muda o Status da matrícula para Trancado e zera a bolsa do monitor
     def trancarMatricula(self):
         super().trancarMatricula()
         self.bolsa = 0
 
-#fulano = Aluno("Adam", 123)
-#fulana = Aluno("Eva", 111)
-#mab241 = Turma("Computação II", 60, 30, "Ter 8 - 10")
-#mab242 = Turma("Computação II", 60, 30, "Ter 8 - 10", [fulano])
-#mab200 = Turma("Algebra I", 80, 100, "Qua 10-12", [fulano, fulana])
-#print(fulana)
-#print(mab241)
-#print(mab200)
-#o = mab241 + mab242
-#print(o)
-#monitor1 = Monitor("Adam", 123, [[mab241, "2020-2"],[mab200, "2021-1"]])
 
-bolsista1 = Bolsista("Adam", 456, 1200)
-print(bolsista1)
 
-bolsista1.trancarMatricula()
-print(bolsista1)
+

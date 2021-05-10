@@ -4,7 +4,7 @@ def divi1(n1, n2):
 def divi2(n1, n2):
     try:
         return float(n1) / float(n2)
-    except ZeroDivisionError:
+    except ZeroDivisionErr
         print("erro... operação iválida")
         return None
     except ValueError:

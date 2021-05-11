@@ -77,3 +77,4 @@ def descobrirCola(lista):
         return resultado
     except IndexError:#tratamento de exceção para divergência entre os tamanhos das listas
         return resultado
+
